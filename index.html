@@ -174,11 +174,11 @@
       </button>
 
       <div class="tiles3 rv" style="--d:.4s">
-        <a class="tile" href="tel:+971509660624">
+        <a class="tile" href="tel:+971555448503">
           <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg>
           Call
         </a>
-        <a class="tile" href="https://wa.me/971509660624">
+        <a class="tile" href="https://wa.me/971555448503">
           <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>
           WhatsApp
         </a>
@@ -235,7 +235,7 @@
     document.querySelectorAll('a,button,.avatar').forEach(function(el){el.addEventListener('mouseenter',function(){ring.classList.add('hov');});el.addEventListener('mouseleave',function(){ring.classList.remove('hov');});}); })();
   function toast(msg){var t=document.getElementById('toast');t.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F6F1E6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l9 -11"/></svg>'+msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2300);}
   function saveContact(){
-    var vcard=["BEGIN:VCARD","VERSION:3.0","N:Hushare;Kartiksingh;;;","FN:Kartiksingh Hushare","TEL;TYPE=CELL:+971509660624","EMAIL:kartiksinghushare@gmail.com","URL:https://kartikhushare.com","TITLE:Technology, Operations & Management","ADR;TYPE=WORK:;;Dubai;;;;UAE","END:VCARD"].join("\r\n");
+    var vcard=["BEGIN:VCARD","VERSION:3.0","N:Hushare;Kartiksingh;;;","FN:Kartiksingh Hushare","TEL;TYPE=CELL:+971555448503","EMAIL:kartiksinghushare@gmail.com","URL:https://kartikhushare.com","TITLE:Technology, Operations & Management","ADR;TYPE=WORK:;;Dubai;;;;UAE","END:VCARD"].join("\r\n");
     var blob=new Blob([vcard],{type:"text/vcard;charset=utf-8"});var url=URL.createObjectURL(blob);var a=document.createElement("a");a.href=url;a.download="Kartiksingh-Hushare.vcf";document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},1500);
     var btn=document.getElementById('saveBtn'),orig=btn.innerHTML;btn.classList.add('ok');
     btn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6F1E6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l9 -11"/></svg> Saved to your phone';
