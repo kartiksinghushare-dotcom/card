@@ -3,266 +3,187 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<meta name="theme-color" content="#0C6B4D">
+<meta name="theme-color" content="#ebeae8">
 <title>Kartiksingh Hushare</title>
+<meta name="description" content="Kartiksingh Hushare. Technology, operations and management in Dubai. Save my contact, call, WhatsApp or email.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23161616'/%3E%3Ctext x='32' y='41' font-family='Poppins,Arial,sans-serif' font-size='24' font-weight='600' fill='%23ffffff' text-anchor='middle'%3EKH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* Same tokens as the portfolio: warm grey page, glass cards, black pills, status as colour plus words. */
   :root{
-    --bg:#F2EBD9; --card:#FFFFFF; --tile:#FBFAF4; --ink:#0F1713; --muted:#5E6962; --soft:#3a443d;
-    --green:#0C6B4D; --emerald:#11A06B; --gold:#D9A13B; --mint:#E5F1EA; --line:#E6E3D6;
-    --display:'Archivo',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
-    --easeOut:cubic-bezier(.16,1,.3,1);
+    --bg:#ebeae8; --card:rgba(255,255,255,.55); --solid:#f6f5f3; --tile:#efeeec; --control:#ffffff;
+    --ink:#161616; --t2:#6f6b66; --t3:#9a968f; --line:rgba(22,22,22,.10); --line-soft:rgba(22,22,22,.06);
+    --green-text:#1d6b42; --green-tint:#ddf1e5;
+    --font:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --shadow:0 1px 2px rgba(22,22,22,.04),0 12px 32px rgba(22,22,22,.06);
   }
-  *{box-sizing:border-box;}
-  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); min-height:100vh; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-  ::selection{background:var(--green); color:#fff;}
-  a{color:inherit; text-decoration:none;}
-  @media(pointer:fine){ body.cur-on, body.cur-on a, body.cur-on button{cursor:none;} }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column}
+  ::selection{background:var(--ink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;font-size:inherit;color:inherit;border:none;background:none;cursor:pointer}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:14px}
 
-  .blobs{position:fixed; inset:0; z-index:-3; overflow:hidden; pointer-events:none; transition:transform .5s ease-out;}
-  .blob{position:absolute; border-radius:50%; filter:blur(94px); opacity:.4;}
-  .b1{width:480px; height:480px; background:radial-gradient(circle,#9ED9BF,transparent 65%); top:-160px; left:-160px; animation:d1 26s ease-in-out infinite alternate;}
-  .b2{width:440px; height:440px; background:radial-gradient(circle,#F0D9A8,transparent 65%); top:42%; right:-190px; animation:d2 31s ease-in-out infinite alternate;}
-  .b3{width:500px; height:500px; background:radial-gradient(circle,#BCE3D2,transparent 65%); bottom:-260px; left:34%; animation:d3 36s ease-in-out infinite alternate;}
-  @keyframes d1{to{transform:translate(120px,90px) scale(1.12);}}
-  @keyframes d2{to{transform:translate(-100px,-110px) scale(1.08);}}
-  @keyframes d3{to{transform:translate(90px,-80px) scale(1.15);}}
-  #particles{position:fixed; inset:0; z-index:-2; pointer-events:none;}
-  .grain{position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .page{flex:1;width:100%;max-width:1000px;margin:0 auto;padding:28px 18px 24px;display:grid;grid-template-columns:1fr;gap:14px;align-content:start}
+  .glass{background:var(--card);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.7);border-radius:30px;box-shadow:var(--shadow)}
 
-  /* cover bar */
-  .cover{position:relative; height:88px; background:linear-gradient(135deg,#0C6B4D 0%, #11A06B 100%); display:flex; align-items:center;}
-  .cover::after{content:""; position:absolute; inset:0; opacity:.5; background:radial-gradient(200px 120px at 84% -10%, rgba(255,255,255,.18), transparent 70%);}
-  .cover-in{position:relative; max-width:1040px; margin:0 auto; width:100%; padding:0 22px; display:flex; align-items:center; justify-content:flex-end;}
-  .hbrand{display:flex; align-items:center; gap:12px;}
-  .hlogo{width:38px; height:38px; border:1.5px solid rgba(255,255,255,.55); border-radius:10px; display:grid; place-items:center;
-    font-family:var(--display); font-variation-settings:'wdth' 100; font-weight:800; font-size:14px; color:#fff;}
-  .hname{display:none; font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#EAF5EF;}
-  .hstatus{display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#EAF5EF;}
-  .live{width:7px; height:7px; border-radius:50%; background:var(--gold); animation:pulse 2s infinite;}
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,161,59,.55);}60%{box-shadow:0 0 0 7px rgba(217,161,59,0);}}
+  /* identity */
+  .id{padding:24px 22px 26px}
+  .id-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+  .avatar{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:600;font-size:22px;overflow:hidden;flex:none}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;background:var(--tile);border-radius:50px;padding:4px 11px;white-space:nowrap}
+  .tag.ok{background:var(--green-tint);color:var(--green-text)}
+  .tag.ok::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+  .crumb{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);font-weight:500;margin-bottom:6px}
+  h1{font-weight:600;font-size:clamp(32px,9vw,44px);line-height:1.06;letter-spacing:-.03em}
+  .role{font-weight:500;font-size:15px;margin-top:12px}
+  .focus{font-size:13px;color:var(--t2);margin-top:2px}
+  .bio{color:var(--t2);margin-top:16px;padding-top:16px;border-top:1px solid var(--line);max-width:46ch}
 
-  /* content */
-  .content{position:relative; max-width:1040px; margin:0 auto; padding:0 22px 44px; display:grid; grid-template-columns:1fr; gap:28px;}
-  .col-id{text-align:left;}
-  .avatar{width:58px; height:58px; border-radius:17px; margin:-36px 0 0; background:var(--green); position:relative;
-    display:flex; align-items:center; justify-content:center; overflow:hidden; cursor:pointer;
-    box-shadow:0 0 0 4px var(--bg), 0 16px 32px -12px rgba(12,107,77,.55); transition:transform .4s var(--easeOut);}
-  .avatar:hover{transform:scale(1.05) rotate(-2deg);}
-  .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
-  .avatar span{font-family:var(--display); font-variation-settings:'wdth' 100; font-weight:800; font-size:21px; color:#F6F1E6;}
+  /* actions */
+  .act{display:grid;gap:10px;align-content:start}
+  .save{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--ink);color:#fff;font-weight:500;font-size:15px;padding:16px;border-radius:50px;transition:background .2s,color .2s,box-shadow .2s,transform .15s var(--ease)}
+  .save:hover{background:#000}
+  .save:active{transform:scale(.98)}
+  .save svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .save.done{background:var(--control);color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
 
-  .name{font-family:var(--display); font-variation-settings:'wdth' 112; font-weight:800; font-size:33px; line-height:1.04; letter-spacing:-0.02em; margin:16px 0 0;}
-  .name .w{display:inline-block;}
-  .name .hl{color:var(--green);}
-  .name .ch{display:inline-block; transform:translateY(115%); opacity:0;}
-  .name.go .ch{animation:chIn .72s var(--easeOut) forwards;}
-  @keyframes chIn{to{transform:none; opacity:1;}}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .tiles.two{grid-template-columns:repeat(2,1fr)}
+  .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px 6px;background:var(--card);border:1px solid rgba(255,255,255,.7);border-radius:22px;font-size:13px;font-weight:500;transition:background .2s,box-shadow .25s,transform .2s var(--ease)}
+  .tile:hover{background:var(--control);box-shadow:0 12px 28px rgba(22,22,22,.10);transform:translateY(-2px)}
+  .tile:active{transform:scale(.97)}
+  .tile svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-  .role{font-family:var(--body); font-weight:600; color:var(--green); font-size:15px; margin-top:9px;}
-  .eyebrow{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--green); margin-top:12px;}
-  .tick{width:20px; height:2px; background:var(--gold); flex:none;}
-  .loc{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:11px;}
-  .bio{font-size:14.5px; line-height:1.62; color:var(--soft); margin:18px 0 0; max-width:480px;}
+  .links{padding:6px 10px}
+  .link{display:grid;grid-template-columns:42px 1fr 34px;gap:12px;align-items:center;padding:12px 8px;border-bottom:1px solid var(--line-soft);border-radius:18px;transition:background .2s}
+  .link:last-child{border-bottom:none}
+  .link:hover{background:var(--control)}
+  .link .ic{width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:600;font-size:17px}
+  .link .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .link b{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:500;font-size:15px}
+  .link small{display:block;font-size:12.5px;color:var(--t2)}
+  .go{width:34px;height:34px;border-radius:50%;background:var(--tile);display:grid;place-items:center;transition:background .2s}
+  .go svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+  .link:hover .go{background:var(--ink)}
+  .link:hover .go svg{stroke:#fff}
 
-  .btn-primary{width:100%; border:none; cursor:pointer; padding:16px; border-radius:14px;
-    background:var(--green); color:#F6F1E6; font-family:var(--mono); font-weight:500; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    box-shadow:0 14px 28px -14px rgba(12,107,77,.7); transition:transform .12s ease, background .35s, box-shadow .35s;}
-  .btn-primary:hover{background:var(--ink); transform:translateY(-2px);}
-  .btn-primary:active{transform:scale(.985);}
-  .btn-primary.ok{background:var(--emerald);}
+  .foot{text-align:center;font-size:12px;color:var(--t3);padding:14px 18px 26px}
 
-  .tiles3{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:13px;}
-  .tiles2{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:10px;}
-  .tile{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:16px 0;
-    background:var(--tile); border:1px solid var(--line); border-radius:14px;
-    font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink);
-    transition:transform .12s ease, border-color .25s, background .3s, box-shadow .35s;}
-  .tile:hover{background:#fff; border-color:#CFE2D8; transform:translateY(-3px); box-shadow:0 14px 30px -18px rgba(15,23,19,.22);}
-  .tile:active{transform:scale(.96);}
-  .tile svg{transition:transform .3s var(--easeOut);}
-  .tile:hover svg{transform:scale(1.12);}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;font-size:13px;font-weight:500;padding:10px 18px;border-radius:50px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease);z-index:60;display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+  .toast svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
-  .cta-port{display:flex; align-items:center; gap:13px; margin-top:11px; padding:15px 16px;
-    background:var(--mint); border:1px solid rgba(12,107,77,.18); border-radius:14px; color:var(--green);
-    transition:transform .12s ease, box-shadow .35s, background .3s;}
-  .cta-port:hover{transform:translateY(-2px); box-shadow:0 16px 34px -18px rgba(12,107,77,.4); background:#DEEEE5;}
-  .cta-port:active{transform:scale(.99);}
-  .cp-ic{width:40px; height:40px; border-radius:11px; background:var(--green); display:grid; place-items:center; flex:none;}
-  .cp-tx{flex:1; text-align:left; display:flex; flex-direction:column; gap:2px;}
-  .cp-tx b{font-family:var(--body); font-weight:600; font-size:14px; color:var(--ink);}
-  .cp-tx small{font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);}
-  .cp-arr{color:var(--gold); transition:transform .3s var(--easeOut); flex:none;}
-  .cta-port:hover .cp-arr{transform:translateX(4px);}
-
-  .gr{color:var(--green); flex:none;}
-  .foot{max-width:1040px; margin:0 auto; padding:20px 22px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:center; gap:9px;
-    font-family:var(--mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);}
-  .dot{width:6px; height:6px; border-radius:50%; background:var(--emerald);}
-
-  .rv{opacity:0; transform:translateY(20px); transition:opacity .75s var(--easeOut), transform .75s var(--easeOut); transition-delay:var(--d,0s);}
-  .rv.in{opacity:1; transform:none;}
-
-  .toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#F6F1E6;
-    font-family:var(--mono); font-size:11px; letter-spacing:.08em; padding:11px 18px; border-radius:50px; opacity:0; pointer-events:none;
-    transition:opacity .4s, transform .4s var(--easeOut); z-index:60; display:flex; align-items:center; gap:8px;}
-  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
-
-  .cur-dot,.cur-ring{position:fixed; top:0; left:0; pointer-events:none; z-index:9999; border-radius:50%; will-change:transform;}
-  .cur-dot{width:7px; height:7px; background:var(--green); transform:translate(-50%,-50%);}
-  .cur-ring{width:34px; height:34px; border:1.5px solid var(--green); transform:translate(-50%,-50%); transition:width .3s,height .3s,background .3s,border-color .3s;}
-  .cur-ring.hov{width:56px; height:56px; background:rgba(12,107,77,.1); border-color:var(--gold);}
-  @media(pointer:coarse){.cur-dot,.cur-ring{display:none;}}
-
-  @media(prefers-reduced-motion:reduce){.rv{opacity:1; transform:none;} .blob{animation:none;} .name .ch{transform:none; opacity:1;}}
-
-  @media(min-width:600px){ .hname{display:block;} }
-
-  /* two columns on wider screens */
   @media(min-width:820px){
-    .cover{height:122px;} .cover-in{padding:0 44px;}
-    .hlogo{width:44px; height:44px; font-size:16px;}
-    .hstatus{font-size:10.5px;}
-    .content{grid-template-columns:1.04fr 1fr; gap:54px; padding:0 44px 56px; align-items:start;}
-    .col-id .avatar{width:82px; height:82px; border-radius:22px; margin:-54px 0 0;}
-    .col-id .avatar span{font-size:31px;}
-    .name{font-size:44px; margin-top:24px;}
-    .role{font-size:17px; margin-top:11px;}
-    .eyebrow{font-size:10.5px; margin-top:15px;}
-    .loc{font-size:11px; margin-top:12px;}
-    .bio{font-size:15.5px; margin-top:20px;}
-    .col-act{padding-top:36px; max-width:440px;}
-    .foot{padding:24px 44px;}
+    .page{grid-template-columns:1.05fr 1fr;gap:14px;padding:64px 30px 30px;align-items:start}
+    .id{padding:34px 34px 38px}
+    .avatar{width:84px;height:84px;font-size:28px}
+    h1{font-size:54px}
+    .role{font-size:17px}
+    .focus{font-size:14px}
+    .bio{font-size:15.5px}
   }
-  /* Evarca featured product card */
-  .cta-evarca{display:flex; align-items:center; gap:13px; margin-top:11px; padding:15px 16px; border-radius:14px; position:relative; overflow:hidden;
-    background:linear-gradient(135deg,#0C6B4D 0%,#11A06B 100%); color:#F6F1E6;
-    box-shadow:0 16px 30px -18px rgba(12,107,77,.6); transition:transform .12s ease, box-shadow .35s;}
-  .cta-evarca::after{content:""; position:absolute; inset:0; opacity:.55; pointer-events:none;
-    background:radial-gradient(220px 130px at 88% -30%, rgba(255,255,255,.22), transparent 70%);}
-  .cta-evarca:hover{transform:translateY(-2px); box-shadow:0 22px 40px -16px rgba(12,107,77,.7);}
-  .cta-evarca:active{transform:scale(.99);}
-  .cta-evarca .cp-ic{width:40px; height:40px; border-radius:11px; flex:none; position:relative; z-index:1;
-    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.45); display:grid; place-items:center;
-    font-family:var(--display); font-variation-settings:'wdth' 100; font-weight:800; font-size:19px; color:#fff;}
-  .cta-evarca .cp-tx{flex:1; text-align:left; display:flex; flex-direction:column; gap:3px; position:relative; z-index:1;}
-  .cta-evarca .cp-tx b{font-family:var(--body); font-weight:600; font-size:14px; color:#fff; display:flex; align-items:center; gap:8px;}
-  .cta-evarca .cp-tx small{font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:#EAF5EF;}
-  .cta-evarca .cp-arr{color:var(--gold); flex:none; position:relative; z-index:1; transition:transform .3s var(--easeOut);}
-  .cta-evarca:hover .cp-arr{transform:translateX(4px);}
-  .ev-badge{font-family:var(--mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:#0F1713; background:var(--gold); border-radius:5px; padding:2px 6px; font-weight:500;}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-  <div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-  <canvas id="particles"></canvas>
-  <div class="grain"></div>
 
-  <div class="cover">
-    <div class="cover-in">
-      <div class="hstatus"><span class="live"></span>Open to work · Dubai</div>
-    </div>
-  </div>
+  <main class="page">
 
-  <main class="content">
-
-    <div class="col-id">
-      <!-- ===== PHOTO: replace the <span> with <img src="your-photo.jpg" alt="Kartiksingh Hushare"> ===== -->
-      <div class="avatar rv" id="avatar" style="--d:.05s"><span>KH</span></div>
-
-      <h1 class="name"><span class="w">Kartiksingh</span> <span class="w hl">Hushare</span></h1>
-      <div class="role rv" style="--d:.18s">Technology · Operations · Management</div>
-      <div class="eyebrow rv" style="--d:.22s"><span class="tick"></span>AI Automation · Analytics · Systems</div>
-      <div class="loc rv" style="--d:.26s">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5E6962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657L13.414 20.9a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg>
-        Dubai · UAE
+    <section class="id glass">
+      <div class="id-top">
+        <!-- PHOTO: replace the letters with <img src="your-photo.jpg" alt="Kartiksingh Hushare"> -->
+        <div class="avatar">KH</div>
+        <span class="tag ok">Open to work</span>
       </div>
-      <p class="bio rv" style="--d:.3s">A technology and operations professional with a strong management foundation — experienced in AI automation, analytics, and making businesses run more efficiently.</p>
-    </div>
+      <div class="crumb">Dubai / UAE</div>
+      <h1>Kartiksingh Hushare.</h1>
+      <p class="role">Technology, operations and management</p>
+      <p class="focus">AI automation, analytics and systems</p>
+      <p class="bio">A technology and operations professional with a strong management foundation. Experienced in AI automation, analytics, and making businesses run more efficiently.</p>
+    </section>
 
-    <div class="col-act">
-      <button class="btn-primary rv" id="saveBtn" style="--d:.34s" onclick="saveContact()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6F1E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M16 19h6"/><path d="M19 16v6"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4"/></svg>
-        Save my contact
+    <section class="act" aria-label="Contact">
+      <button class="save" id="saveBtn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M16 19h6"/><path d="M19 16v6"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4"/></svg>
+        <span id="saveTxt">Save my contact</span>
       </button>
 
-      <div class="tiles3 rv" style="--d:.4s">
+      <div class="tiles">
         <a class="tile" href="tel:+971555448503">
-          <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg>
           Call
         </a>
-        <a class="tile" href="https://wa.me/971555448503">
-          <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>
+        <a class="tile" href="https://wa.me/971555448503" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>
           WhatsApp
         </a>
         <a class="tile" href="mailto:kartiksinghushare@gmail.com">
-          <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path d="M3 7l9 6l9 -6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path d="M3 7l9 6l9 -6"/></svg>
           Email
         </a>
       </div>
 
-      <a class="cta-evarca rv" style="--d:.44s" href="https://evarca.com" target="_blank" rel="noopener">
-        <span class="cp-ic">E</span>
-        <span class="cp-tx"><b>Evarca <span class="ev-badge">My SaaS</span></b><small>People &amp; operations platform · Live</small></span>
-        <svg class="cp-arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6l-6 6"/></svg>
-      </a>
-      <a class="cta-port rv" style="--d:.46s" href="https://kartikhushare.com" target="_blank" rel="noopener">
-        <span class="cp-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#F6F1E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18"/></svg></span>
-        <span class="cp-tx"><b>Portfolio &amp; work</b><small>Projects · startup · more</small></span>
-        <svg class="cp-arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6l-6 6"/></svg>
-      </a>
+      <div class="links glass">
+        <a class="link" href="https://evarca.com" target="_blank" rel="noopener">
+          <span class="ic">E</span>
+          <span><b>Evarca <span class="tag">My SaaS</span><span class="tag ok">Live</span></b><small>People and operations platform</small></span>
+          <span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+        <a class="link" href="https://kartikhushare.com" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18"/></svg></span>
+          <span><b>Portfolio and work</b><small>Projects, automations, my startup</small></span>
+          <span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+      </div>
 
-      <div class="tiles2 rv" style="--d:.5s">
+      <div class="tiles two">
         <a class="tile" href="https://linkedin.com/in/kartiksingh-hushare-1a6698251" target="_blank" rel="noopener">
-          <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/><path d="M8 11l0 5"/><path d="M8 8l0 .01"/><path d="M12 16l0 -5"/><path d="M16 16v-3a2 2 0 0 0 -4 0"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/><path d="M8 11l0 5"/><path d="M8 8l0 .01"/><path d="M12 16l0 -5"/><path d="M16 16v-3a2 2 0 0 0 -4 0"/></svg>
           LinkedIn
         </a>
         <a class="tile" href="https://instagram.com/kartikhushare" target="_blank" rel="noopener">
-          <svg class="gr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0C6B4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.01"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.01"/></svg>
           Instagram
         </a>
       </div>
-    </div>
+    </section>
 
   </main>
 
-  <footer class="foot"><span class="dot"></span>Tap · Save · Connect</footer>
+  <footer class="foot">Tap, save, connect.</footer>
 
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast" role="status"></div>
 
 <script>
-  var reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  (function(){ var els=[].slice.call(document.querySelectorAll('.rv'));
-    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
-    var io=new IntersectionObserver(function(items){items.forEach(function(it){if(it.isIntersecting){it.target.classList.add('in');io.unobserve(it.target);}});},{threshold:.1});
-    els.forEach(function(e){io.observe(e);});
-    requestAnimationFrame(function(){els.forEach(function(e){if(e.getBoundingClientRect().top<innerHeight){e.classList.add('in');}});}); })();
-  (function(){ var name=document.querySelector('.name'),words=name.querySelectorAll('.w'),idx=0;
-    words.forEach(function(w){var txt=w.textContent;w.textContent='';for(var i=0;i<txt.length;i++){var s=document.createElement('span');s.className='ch';s.textContent=txt[i];s.style.animationDelay=(idx*0.035)+'s';idx++;w.appendChild(s);}});
-    requestAnimationFrame(function(){name.classList.add('go');}); })();
-  (function(){ if(reduced)return; var cv=document.getElementById('particles'),ctx=cv.getContext('2d'),pts=[],W,H,DPR=Math.min(devicePixelRatio||1,2);
-    function resize(){W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';var n=Math.min(Math.round(innerWidth/30),48);pts=[];for(var i=0;i<n;i++){pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.16*DPR,vy:(Math.random()-.5)*0.16*DPR});}}
-    resize();addEventListener('resize',resize);var LINK=120*DPR;
-    function tick(){ctx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,1.5*DPR,0,6.283);ctx.fillStyle='rgba(12,107,77,.28)';ctx.fill();for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);if(d<LINK){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(12,107,77,'+(0.1*(1-d/LINK))+')';ctx.lineWidth=DPR;ctx.stroke();}}}requestAnimationFrame(tick);} tick(); })();
-  (function(){ if(reduced)return; var blobs=document.querySelector('.blobs');function set(x,y){blobs.style.transform='translate('+x+'px,'+y+'px)';}
-    addEventListener('pointermove',function(e){set((e.clientX/innerWidth-.5)*-26,(e.clientY/innerHeight-.5)*-26);});
-    addEventListener('deviceorientation',function(e){if(e.gamma==null)return;set(Math.max(-22,Math.min(22,e.gamma))*-1,Math.max(-22,Math.min(22,(e.beta||0)-40))*-0.4);}); })();
-  (function(){ if(!matchMedia('(pointer:fine)').matches)return; var dot=document.createElement('div');dot.className='cur-dot';var ring=document.createElement('div');ring.className='cur-ring';document.body.appendChild(dot);document.body.appendChild(ring);document.body.classList.add('cur-on');var rx=0,ry=0,mx=0,my=0;
-    addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;dot.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';});
-    function follow(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';requestAnimationFrame(follow);}follow();
-    document.querySelectorAll('a,button,.avatar').forEach(function(el){el.addEventListener('mouseenter',function(){ring.classList.add('hov');});el.addEventListener('mouseleave',function(){ring.classList.remove('hov');});}); })();
-  function toast(msg){var t=document.getElementById('toast');t.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F6F1E6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l9 -11"/></svg>'+msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},2300);}
-  function saveContact(){
-    var vcard=["BEGIN:VCARD","VERSION:3.0","N:Hushare;Kartiksingh;;;","FN:Kartiksingh Hushare","TEL;TYPE=CELL:+971555448503","EMAIL:kartiksinghushare@gmail.com","URL:https://kartikhushare.com","TITLE:Technology, Operations & Management","ADR;TYPE=WORK:;;Dubai;;;;UAE","END:VCARD"].join("\r\n");
-    var blob=new Blob([vcard],{type:"text/vcard;charset=utf-8"});var url=URL.createObjectURL(blob);var a=document.createElement("a");a.href=url;a.download="Kartiksingh-Hushare.vcf";document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},1500);
-    var btn=document.getElementById('saveBtn'),orig=btn.innerHTML;btn.classList.add('ok');
-    btn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6F1E6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l9 -11"/></svg> Saved to your phone';
-    toast('Contact downloaded');setTimeout(function(){btn.classList.remove('ok');btn.innerHTML=orig;},2600);
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.innerHTML = '<svg viewBox="0 0 24 24"><path d="M5 12l5 5l9 -11"/></svg>';
+    t.appendChild(document.createTextNode(msg));
+    t.classList.add('show'); clearTimeout(t._t);
+    t._t = setTimeout(function(){ t.classList.remove('show'); }, 2400);
   }
+  document.getElementById('saveBtn').addEventListener('click', function(){
+    var vcard = ["BEGIN:VCARD","VERSION:3.0","N:Hushare;Kartiksingh;;;","FN:Kartiksingh Hushare","TEL;TYPE=CELL:+971555448503","EMAIL:kartiksinghushare@gmail.com","URL:https://kartikhushare.com","TITLE:Technology, Operations & Management","ADR;TYPE=WORK:;;Dubai;;;;UAE","END:VCARD"].join("\r\n");
+    var btn = this, txt = document.getElementById('saveTxt');
+    try{
+      var blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = "Kartiksingh-Hushare.vcf";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+      btn.classList.add('done'); txt.textContent = 'Contact saved';
+      toast('Contact downloaded');
+      setTimeout(function(){ btn.classList.remove('done'); txt.textContent = 'Save my contact'; }, 2600);
+    }catch(e){
+      toast('Could not save. Use Call or WhatsApp instead.');
+    }
+  });
 </script>
 </body>
 </html>
